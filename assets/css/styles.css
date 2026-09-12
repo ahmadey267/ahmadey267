@@ -117,12 +117,13 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ---------- buttons ---------- */
 .act {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-family: var(--display); font-weight: 700; font-size: .95rem; letter-spacing: -0.01em;
-  padding: 16px 28px; border: 1px solid transparent; border-radius: 2px;
-  cursor: pointer; transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-family: var(--display); font-weight: 700; font-size: .86rem; letter-spacing: -0.01em;
+  padding: 11px 20px; border: 1px solid transparent; border-radius: 2px;
+  white-space: nowrap; cursor: pointer;
+  transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
 }
-.act svg { transition: transform .3s var(--ease); }
+.act svg { width: 14px; height: 14px; transition: transform .3s var(--ease); }
 .act:hover svg { transform: translateX(5px); }
 
 .act-ember { background: var(--ember); color: #fff; }
@@ -137,7 +138,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .act-line-light { border-color: var(--ink-line); color: #fff; }
 .act-line-light:hover { background: #fff; color: var(--ink); border-color: #fff; }
 
-.acts { display: flex; flex-wrap: wrap; gap: 14px; }
+.acts { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 
 /* text link with underline sweep */
 .tlink {
@@ -186,7 +187,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .masthead.solid .mast-phone { color: var(--heading); }
 @media (min-width: 1180px) { .mast-phone { display: inline-flex; align-items: center; gap: 9px; } }
 .mast-cta { display: none; }
-@media (min-width: 1000px) { .mast-cta { display: inline-flex; padding: 13px 22px; font-size: .88rem; } }
+@media (min-width: 1000px) { .mast-cta { display: inline-flex; padding: 10px 18px; font-size: .8rem; } }
 
 .burger {
   display: inline-flex; flex-direction: column; justify-content: center; gap: 6px;
@@ -264,7 +265,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 .qb-field select option { background: var(--ink); color: #fff; }
 .qb-field input::-webkit-calendar-picker-indicator { filter: invert(1); opacity: .55; cursor: pointer; }
-.quickbar button { border-radius: 0; justify-content: center; padding-inline: 34px; }
+.quickbar button { border-radius: 0; padding-inline: 30px; }
 @media (max-width: 899px) { .quickbar button { width: 100%; } }
 
 /* ---------- ticker ---------- */
@@ -406,7 +407,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .reason p { margin-top: 12px; font-size: .96rem; }
 
 /* full bleed band */
-.band { position: relative; height: clamp(280px, 42vw, 520px); overflow: hidden; }
+.band { position: relative; height: clamp(300px, 46vw, 620px); overflow: hidden; }
 .band img { width: 100%; height: 100%; object-fit: cover; }
 .band-cap {
   position: absolute; left: 0; right: 0; bottom: 0; padding: var(--gutter);

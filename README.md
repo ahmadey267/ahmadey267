@@ -1,67 +1,93 @@
 # Haviy Global Services website
 
-A static marketing website for Haviy Global Services (HGS), a Nairobi based travel,
-transport and concierge services provider. All content, imagery and brand colours are
-taken from the official HGS company profile.
+Static marketing website for Haviy Global Services (HGS), a Nairobi based travel,
+transport and concierge services provider. Content, imagery and brand colours all
+come from the official HGS company profile.
 
 ## Pages
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | Home. Hero, company overview, vision and mission, all nine services, why choose us, core values. |
-| `about.html` | Company overview, vision and mission, core values, core objectives, why choose us. |
-| `services.html` | Full detail for every service line, with a sticky jump navigation. |
-| `contact.html` | Contact details, enquiry form, coverage areas. |
+| `index.html` | Home. Hero with quick enquiry bar, company overview, service index, destinations, fleet, why HGS, process, FAQ. |
+| `about.html` | Overview, vision and mission, core values, core objectives, why HGS. |
+| `services.html` | Full detail for all nine service lines with a sticky jump rail. |
+| `contact.html` | Contact details and enquiry form, coverage areas. |
 
-## Brand
+## Design system
 
-| Token | Value | Use |
+Everything is driven by tokens in the `:root` block at the top of
+`assets/css/styles.css`.
+
+| Token | Value | Role |
 | --- | --- | --- |
-| Blue | `#1e73a7` | Primary brand colour, links, accents |
-| Deep blue | `#16508d` | Gradients, headings on light panels |
-| Navy | `#0e3455` / `#0a2740` | Dark sections, footer, hero overlay |
-| Orange | `#ef6e32` | Calls to action and highlights |
+| `--ink` | `#061a2b` | Deep navy ground for dark chapters, footer, hero |
+| `--blue` | `#1e73a7` | Brand blue, sampled from the company profile |
+| `--sky` | `#6ab8e8` | Lifted blue for accents on dark grounds |
+| `--ember` | `#ef6e32` | Brand orange, the single loud accent |
+| `--mist` | `#edf2f6` | Cool neutral ground, biased toward the blue |
+| `--paper` | `#ffffff` | Light ground |
 
-Typography is Plus Jakarta Sans for headings and Inter for body text, loaded from
-Google Fonts with system fallbacks.
+Typography is Bricolage Grotesque for display and Instrument Sans for body and
+labels, loaded from Google Fonts with system fallbacks. The site commits to one
+brand look rather than following the visitor's light or dark preference, so every
+colour is painted explicitly.
+
+The page alternates light and ink chapters. Services are presented as a numbered
+index with a cursor following image preview on desktop and thumbnails on mobile.
+Fleet is a horizontal rail. There are no repeating three up card grids.
+
+## Imagery
+
+The source company profile is a set of flattened page images, so every photograph
+was cropped out of the rendered PDF pages, trimmed of its background, and put
+through one shared colour grade so the set reads as art directed rather than as a
+collage. The grade lifts shadows toward navy, warms the highlights slightly and
+pulls back saturation.
+
+`assets/img/hero.jpg` is the wide desktop hero. `assets/img/hero-portrait.jpg` is
+a separate portrait frame used on phones, where the wide image would crop to an
+unreadable slice.
 
 ## Structure
 
 ```
 index.html, about.html, services.html, contact.html
 assets/
-  css/styles.css     all styling, design tokens at the top of the file
-  js/main.js         navigation, scroll reveal, counters, enquiry form
-  img/               photography and logos extracted from the company profile
+  css/styles.css    tokens, then components
+  js/main.js        navigation, reveal, counters, cursor preview, forms
+  img/              graded photography and logos from the company profile
 ```
 
-There is no build step and no dependencies. Open any page directly in a browser,
-or serve the folder:
+No build step and no dependencies. Open a page directly, or serve the folder:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then visit http://localhost:8000
-
 ## Deployment
 
-The site is plain HTML, CSS and JavaScript, so it can be hosted anywhere static
-files are served: GitHub Pages, Netlify, Vercel, Cloudflare Pages or standard
-shared hosting. Upload the repository contents to the web root and point
-`hgs.co.ke` at it.
-
-## Editing content
-
-* Service copy lives directly in `services.html` and in the service cards on `index.html`.
-* Contact details appear in the footer of every page, in `contact.html` and in the
-  WhatsApp link at the bottom right of each page.
-* Colours, spacing and typography are controlled by the custom properties in the
-  `:root` block at the top of `assets/css/styles.css`.
+Plain HTML, CSS and JavaScript, so it hosts anywhere static files are served:
+GitHub Pages, Netlify, Vercel, Cloudflare Pages or standard shared hosting.
+Upload the repository contents to the web root and point `hgs.co.ke` at it.
 
 ## Enquiry form
 
-The form on `contact.html` composes a structured email and opens the visitor's mail
-client, so it works without a backend. To capture submissions server side instead,
-point the form at a service such as Formspree or Netlify Forms and remove the
-`submit` handler in `assets/js/main.js`.
+The hero quick bar passes `service`, `date` and `pax` to `contact.html` as query
+parameters and the contact form prefills from them. On submit the form composes a
+structured email and opens the visitor's mail client, so it works with no backend.
+
+To capture submissions server side instead, point the form at a service such as
+Formspree or Netlify Forms and remove the submit handler in `assets/js/main.js`.
+
+## Content that still needs the business
+
+Three things are missing because the company profile does not contain them, and
+each one is worth more to conversion than further design work:
+
+* Named corporate clients or partner logos
+* Client testimonials with attribution
+* Indicative pricing, or at least starting rates per service
+
+The destination list on the home page is drawn from Kenya's major wildlife
+destinations and should be confirmed against what HGS actually arranges before
+launch.

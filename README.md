@@ -64,11 +64,45 @@ No build step and no dependencies. Open a page directly, or serve the folder:
 python3 -m http.server 8000
 ```
 
-## Deployment
+## Deployment (Cloudflare Pages)
 
-Plain HTML, CSS and JavaScript, so it hosts anywhere static files are served:
-GitHub Pages, Netlify, Vercel, Cloudflare Pages or standard shared hosting.
-Upload the repository contents to the web root and point `hgs.co.ke` at it.
+The site is plain HTML, CSS and JavaScript with no build step, so Cloudflare
+Pages serves it directly from the repository.
+
+**Connect the repository once, in the Cloudflare dashboard:**
+
+1. Workers & Pages, then Create, then Pages, then Connect to Git
+2. Pick the `ahmadey267/ahmadey267` repository
+3. Set the production branch to the branch holding this site
+4. Framework preset: **None**
+5. Build command: **leave empty**
+6. Build output directory: **/** (the repository root)
+7. Save and Deploy
+
+Every push to the production branch then redeploys automatically, and pushes to
+any other branch get their own preview URL.
+
+**Custom domain:** in the Pages project, Custom domains, add `hgs.co.ke` and
+`www.hgs.co.ke`. If the domain's nameservers are already on Cloudflare the DNS
+records are created for you; otherwise Cloudflare shows the CNAME to add at the
+current registrar. TLS is issued automatically.
+
+Files that support the deployment:
+
+| File | Purpose |
+| --- | --- |
+| `_headers` | Security headers for all routes, plus browser cache windows. Images are cached for 30 days, CSS and JS for one hour because their filenames are not content hashed. |
+| `404.html` | Branded not found page. Cloudflare Pages serves it automatically for unmatched routes. |
+| `robots.txt` | Allows crawling and points at the sitemap. |
+| `sitemap.xml` | The four indexable pages. Update `lastmod` when content changes materially. |
+
+Every page carries a canonical URL and Open Graph tags pointing at
+`https://www.hgs.co.ke`. If the site launches on a different hostname, search
+and replace that domain across the four HTML files, `robots.txt` and
+`sitemap.xml`.
+
+The site can equally be hosted on Netlify, Vercel or ordinary shared hosting;
+`_headers` is Cloudflare and Netlify syntax.
 
 ## Enquiry form
 

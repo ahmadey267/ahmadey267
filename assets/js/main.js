@@ -73,32 +73,77 @@
     nums.forEach(function (el) { co.observe(el); });
   }
 
-  /* ---- cursor preview on the services index ---- */
-  var peek = document.querySelector('.peek');
-  var rows = document.querySelectorAll('.index-row[data-pic]');
-  if (peek && rows.length && !reduced && window.matchMedia('(min-width: 1100px)').matches) {
-    var img = peek.querySelector('img');
-    var x = 0, y = 0, cx = 0, cy = 0, running = false;
-    var loop = function () {
-      cx += (x - cx) * 0.16;
-      cy += (y - cy) * 0.16;
-      peek.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0) translate(-50%,-50%)' +
-        (peek.classList.contains('on') ? ' scale(1)' : ' scale(.9)');
-      if (running) requestAnimationFrame(loop);
-    };
-    rows.forEach(function (row) {
-      row.addEventListener('mouseenter', function () {
-        img.src = row.getAttribute('data-pic');
-        peek.classList.add('on');
-        if (!running) { running = true; requestAnimationFrame(loop); }
+  /* ---- hero slideshow ---- */
+  var hero = document.querySelector('.hero-media');
+  var dots = document.querySelector('.hero-dots');
+  if (hero && dots) {
+    var slides = hero.querySelectorAll('.hero-slide');
+    var buttons = dots.querySelectorAll('button');
+    var current = 0;
+    var timer = null;
+
+    var show = function (i) {
+      current = (i + slides.length) % slides.length;
+      slides.forEach(function (el, n) { el.classList.toggle('on', n === current); });
+      buttons.forEach(function (b, n) {
+        if (n === current) b.setAttribute('aria-current', 'true');
+        else b.removeAttribute('aria-current');
       });
-      row.addEventListener('mouseleave', function () { peek.classList.remove('on'); });
+    };
+    var start = function () {
+      if (reduced || slides.length < 2) return;
+      stop();
+      timer = window.setInterval(function () { show(current + 1); }, 6500);
+    };
+    var stop = function () { if (timer) { window.clearInterval(timer); timer = null; } };
+
+    buttons.forEach(function (b, n) {
+      b.addEventListener('click', function () { show(n); start(); });
     });
-    window.addEventListener('mousemove', function (e) {
-      x = e.clientX; y = e.clientY;
-      if (cx === 0 && cy === 0) { cx = x; cy = y; }
-    }, { passive: true });
-    document.addEventListener('mouseleave', function () { peek.classList.remove('on'); running = false; });
+    hero.addEventListener('mouseenter', stop);
+    hero.addEventListener('mouseleave', start);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stop(); else start();
+    });
+
+    show(0);
+    start();
+  }
+
+  /* ---- services index drives the image stage ---- */
+  var stage = document.querySelector('.svc-stage');
+  var svcRows = document.querySelectorAll('.svc-explore .index-row[data-svc]');
+  if (stage && svcRows.length) {
+    var shots = stage.querySelectorAll('.svc-shot');
+    var cap = stage.querySelector('.svc-stage-cap');
+    var setSvc = function (key, label) {
+      shots.forEach(function (img) { img.classList.toggle('on', img.getAttribute('data-svc') === key); });
+      svcRows.forEach(function (r) { r.classList.toggle('on', r.getAttribute('data-svc') === key); });
+      if (cap && label) cap.textContent = label;
+    };
+
+    svcRows.forEach(function (row) {
+      var key = row.getAttribute('data-svc');
+      var label = row.querySelector('.index-t') ? row.querySelector('.index-t').textContent : '';
+      row.addEventListener('mouseenter', function () { setSvc(key, label); });
+      row.addEventListener('focus', function () { setSvc(key, label); });
+    });
+
+    /* keep the stage in step with the reader while scrolling, not only on hover */
+    if ('IntersectionObserver' in window) {
+      var svcObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var row = en.target;
+          var label = row.querySelector('.index-t') ? row.querySelector('.index-t').textContent : '';
+          setSvc(row.getAttribute('data-svc'), label);
+        });
+      }, { rootMargin: '-46% 0px -46% 0px' });
+      svcRows.forEach(function (r) { svcObs.observe(r); });
+    }
+
+    var first = svcRows[0];
+    setSvc(first.getAttribute('data-svc'), first.querySelector('.index-t').textContent);
   }
 
   /* ---- jump rail active state ---- */

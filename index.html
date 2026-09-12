@@ -71,23 +71,34 @@
 <main id="main">
 <section class="hero">
   <div class="hero-media">
-    <picture>
-      <source media="(max-width: 780px)" srcset="assets/img/hero-portrait.jpg">
-      <img src="assets/img/hero.jpg" alt="Arriving guests met by a Haviy Global Services chauffeur" fetchpriority="high" width="2400" height="787">
-    </picture>
+    <div class="hero-slide on">
+      <picture>
+        <source media="(max-width: 780px)" srcset="assets/img/hero-portrait.jpg">
+        <img src="assets/img/hero.jpg" alt="Arriving guests met by a Haviy Global Services chauffeur" fetchpriority="high" width="2400" height="787">
+      </picture>
+    </div>
+    <div class="hero-slide"><img src="assets/img/np-giraffes.jpg" alt="Giraffes in Nairobi National Park with the city skyline behind them" loading="lazy" width="1900" height="950"></div>
+    <div class="hero-slide"><img src="assets/img/np-zebras.jpg" alt="Zebras grazing in Nairobi National Park below the city skyline" loading="lazy" width="1900" height="949"></div>
+    <div class="hero-slide"><img src="assets/img/nairobi-skyline.jpg" alt="The Nairobi skyline rising above Uhuru Park" loading="lazy" width="2200" height="1238"></div>
   </div>
   <div class="hero-scrim"></div>
 
   <div class="shell-wide hero-in">
     <div class="hero-copy">
       <span class="hero-tag tag">Nairobi &middot; Kenya &middot; East Africa</span>
-      <h1 class="display-xl">Arrive like the<br>city was <span class="soft">expecting you.</span></h1>
-      <p class="hero-sub body-l">Airport transfers, corporate transport, safaris and concierge care, run by one team from the moment your flight is booked to the moment you leave.</p>
+      <h1>Arrive like the<br>city was <span class="soft">expecting you.</span></h1>
+      <p class="hero-sub">Airport transfers, corporate transport, safaris and concierge care, run by one team from arrival to departure.</p>
       <div class="acts hero-acts">
         <a class="act act-ember" href="contact.html">Request a quote
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg>
         </a>
         <a class="act act-line-light" href="services.html">What we do</a>
+      </div>
+      <div class="hero-dots" role="group" aria-label="Choose a hero image">
+        <button type="button" aria-current="true" aria-label="Show image 1: arrival transport"></button>
+        <button type="button" aria-label="Show image 2: giraffes in Nairobi National Park"></button>
+        <button type="button" aria-label="Show image 3: zebras in Nairobi National Park"></button>
+        <button type="button" aria-label="Show image 4: the Nairobi skyline"></button>
       </div>
     </div>
 
@@ -167,70 +178,84 @@
       </a>
     </div>
 
-    <div class="index-list rv">
-      <a class="index-row" href="services.html#airport-transfers" data-pic="assets/img/jet.jpg">
-        <span class="index-n">01</span>
-        <span class="index-t">Airport transfers</span>
-        <span class="index-d">Pre scheduled pickups, meet and greet, luggage assistance and live flight monitoring, inbound and outbound.</span>
-        <img class="index-thumb" src="assets/img/jet.jpg" alt="" aria-hidden="true" loading="lazy">
-        <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
-      </a>
-      <a class="index-row" href="services.html#hotel-transfers" data-pic="assets/img/doorman.jpg">
-        <span class="index-n">02</span>
-        <span class="index-t">Hotel transfers</span>
-        <span class="index-d">Airport to hotel, inter hotel and conference movement, timed around check in and adjusted to traffic.</span>
-        <img class="index-thumb" src="assets/img/doorman.jpg" alt="" aria-hidden="true" loading="lazy">
-        <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
-      </a>
-      <a class="index-row" href="services.html#corporate-transport" data-pic="assets/img/chauffeur.jpg">
-        <span class="index-n">03</span>
-        <span class="index-t">Corporate transport</span>
-        <span class="index-d">Chauffeur driven vehicles for executives and teams, with uniformed drivers and consolidated billing.</span>
-        <img class="index-thumb" src="assets/img/chauffeur.jpg" alt="" aria-hidden="true" loading="lazy">
-        <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
-      </a>
-      <a class="index-row" href="services.html#hotel-booking" data-pic="assets/img/reception.jpg">
-        <span class="index-n">04</span>
-        <span class="index-t">Hotel bookings</span>
-        <span class="index-d">Luxury, boutique, mid range and corporate accommodation at negotiated rates, aligned with your transport.</span>
-        <img class="index-thumb" src="assets/img/reception.jpg" alt="" aria-hidden="true" loading="lazy">
-        <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
-      </a>
-      <a class="index-row" href="services.html#safari-booking" data-pic="assets/img/guide-zebras.jpg">
-        <span class="index-n">05</span>
-        <span class="index-t">Safari bookings</span>
-        <span class="index-d">Customised itineraries across Kenya's parks with professional guides, 4x4 vehicles and managed logistics.</span>
-        <img class="index-thumb" src="assets/img/guide-zebras.jpg" alt="" aria-hidden="true" loading="lazy">
-        <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
-      </a>
-      <a class="index-row" href="services.html#city-tours" data-pic="assets/img/guests-nairobi.jpg">
-        <span class="index-n">06</span>
-        <span class="index-t">City tours</span>
-        <span class="index-d">Guided exploration for international guests, covering heritage, markets and cuisine with multilingual guides.</span>
-        <img class="index-thumb" src="assets/img/guests-nairobi.jpg" alt="" aria-hidden="true" loading="lazy">
-        <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
-      </a>
-      <a class="index-row" href="services.html#meet-assist" data-pic="assets/img/traveller.jpg">
-        <span class="index-n">07</span>
-        <span class="index-t">Airport meet &amp; assist</span>
-        <span class="index-d">Gate welcome, fast track processing, terminal escort and departure support, including VIP handling.</span>
-        <img class="index-thumb" src="assets/img/traveller.jpg" alt="" aria-hidden="true" loading="lazy">
-        <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
-      </a>
-      <a class="index-row" href="services.html#concierge" data-pic="assets/img/concierge.jpg">
-        <span class="index-n">08</span>
-        <span class="index-t">Concierge</span>
-        <span class="index-d">Travel planning, dining reservations, event ticketing, lifestyle management and urgent requests at any hour.</span>
-        <img class="index-thumb" src="assets/img/concierge.jpg" alt="" aria-hidden="true" loading="lazy">
-        <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
-      </a>
-      <a class="index-row" href="services.html#photography" data-pic="assets/img/camera.jpg">
-        <span class="index-n">09</span>
-        <span class="index-t">Photography &amp; video</span>
-        <span class="index-d">Coverage of arrivals and departures, corporate events, city tours and safaris by professional photographers.</span>
-        <img class="index-thumb" src="assets/img/camera.jpg" alt="" aria-hidden="true" loading="lazy">
-        <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
-      </a>
+    <div class="svc-explore rv">
+      <div class="svc-stage" aria-hidden="true">
+        <img class="svc-shot" data-svc="airport-transfers" src="assets/img/jet.jpg" alt="" loading="lazy">
+        <img class="svc-shot" data-svc="hotel-transfers" src="assets/img/doorman.jpg" alt="" loading="lazy">
+        <img class="svc-shot" data-svc="corporate-transport" src="assets/img/chauffeur.jpg" alt="" loading="lazy">
+        <img class="svc-shot" data-svc="hotel-booking" src="assets/img/reception.jpg" alt="" loading="lazy">
+        <img class="svc-shot" data-svc="safari-booking" src="assets/img/guide-zebras.jpg" alt="" loading="lazy">
+        <img class="svc-shot" data-svc="city-tours" src="assets/img/nairobi-skyline.jpg" alt="" loading="lazy">
+        <img class="svc-shot" data-svc="meet-assist" src="assets/img/team.jpg" alt="" loading="lazy">
+        <img class="svc-shot" data-svc="concierge" src="assets/img/concierge.jpg" alt="" loading="lazy">
+        <img class="svc-shot" data-svc="photography" src="assets/img/camera.jpg" alt="" loading="lazy">
+        <div class="svc-stage-cap"></div>
+      </div>
+      <div class="index-list">
+        <a class="index-row" href="services.html#airport-transfers" data-svc="airport-transfers">
+          <span class="index-n">01</span>
+          <span class="index-t">Airport transfers</span>
+          <span class="index-d">Pre scheduled pickups, meet and greet, luggage assistance and live flight monitoring, inbound and outbound.</span>
+          <img class="index-thumb" src="assets/img/jet.jpg" alt="Private jet and executive car at dusk" loading="lazy">
+          <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
+        </a>
+        <a class="index-row" href="services.html#hotel-transfers" data-svc="hotel-transfers">
+          <span class="index-n">02</span>
+          <span class="index-t">Hotel transfers</span>
+          <span class="index-d">Airport to hotel, inter hotel and conference movement, timed around check in and adjusted to traffic.</span>
+          <img class="index-thumb" src="assets/img/doorman.jpg" alt="Guests being welcomed at a hotel entrance" loading="lazy">
+          <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
+        </a>
+        <a class="index-row" href="services.html#corporate-transport" data-svc="corporate-transport">
+          <span class="index-n">03</span>
+          <span class="index-t">Corporate transport</span>
+          <span class="index-d">Chauffeur driven vehicles for executives and teams, with uniformed drivers and consolidated billing.</span>
+          <img class="index-thumb" src="assets/img/chauffeur.jpg" alt="Uniformed chauffeur driving a corporate client" loading="lazy">
+          <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
+        </a>
+        <a class="index-row" href="services.html#hotel-booking" data-svc="hotel-booking">
+          <span class="index-n">04</span>
+          <span class="index-t">Hotel bookings</span>
+          <span class="index-d">Luxury, boutique, mid range and corporate accommodation at negotiated rates, aligned with your transport.</span>
+          <img class="index-thumb" src="assets/img/reception.jpg" alt="Guest checking in at a hotel reception" loading="lazy">
+          <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
+        </a>
+        <a class="index-row" href="services.html#safari-booking" data-svc="safari-booking">
+          <span class="index-n">05</span>
+          <span class="index-t">Safari bookings</span>
+          <span class="index-d">Customised itineraries across Kenya's parks with professional guides, 4x4 vehicles and managed logistics.</span>
+          <img class="index-thumb" src="assets/img/guide-zebras.jpg" alt="HGS guide with zebras grazing on the open plains" loading="lazy">
+          <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
+        </a>
+        <a class="index-row" href="services.html#city-tours" data-svc="city-tours">
+          <span class="index-n">06</span>
+          <span class="index-t">City tours</span>
+          <span class="index-d">Guided exploration for international guests, covering heritage, markets and cuisine with multilingual guides.</span>
+          <img class="index-thumb" src="assets/img/nairobi-skyline.jpg" alt="The Nairobi skyline above Uhuru Park" loading="lazy">
+          <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
+        </a>
+        <a class="index-row" href="services.html#meet-assist" data-svc="meet-assist">
+          <span class="index-n">07</span>
+          <span class="index-t">Airport meet &amp; assist</span>
+          <span class="index-d">Gate welcome, fast track processing, terminal escort and departure support, including VIP handling.</span>
+          <img class="index-thumb" src="assets/img/team.jpg" alt="HGS representative meeting a group of arriving guests" loading="lazy">
+          <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
+        </a>
+        <a class="index-row" href="services.html#concierge" data-svc="concierge">
+          <span class="index-n">08</span>
+          <span class="index-t">Concierge</span>
+          <span class="index-d">Travel planning, dining reservations, event ticketing, lifestyle management and urgent requests at any hour.</span>
+          <img class="index-thumb" src="assets/img/concierge.jpg" alt="Concierge desk at a hotel" loading="lazy">
+          <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
+        </a>
+        <a class="index-row" href="services.html#photography" data-svc="photography">
+          <span class="index-n">09</span>
+          <span class="index-t">Photography &amp; video</span>
+          <span class="index-d">Coverage of arrivals and departures, corporate events, city tours and safaris by professional photographers.</span>
+          <img class="index-thumb" src="assets/img/camera.jpg" alt="Professional camera capturing a city at night" loading="lazy">
+          <span class="index-a"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -423,8 +448,6 @@
     </div>
   </div>
 </section>
-
-<div class="peek" aria-hidden="true"><img src="assets/img/jet.jpg" alt=""></div>
 </main>
 
 <footer class="foot">

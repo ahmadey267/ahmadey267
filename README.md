@@ -96,10 +96,25 @@ Files that support the deployment:
 | `robots.txt` | Allows crawling and points at the sitemap. |
 | `sitemap.xml` | The four indexable pages. Update `lastmod` when content changes materially. |
 
-Every page carries a canonical URL and Open Graph tags pointing at
-`https://www.hgs.co.ke`. If the site launches on a different hostname, search
-and replace that domain across the four HTML files, `robots.txt` and
-`sitemap.xml`.
+### Site URL
+
+The site is currently served from `https://hgs.pages.dev`, and the canonical
+URLs, Open Graph tags, `robots.txt` and `sitemap.xml` all point there.
+
+When `hgs.co.ke` goes live, switch them in one pass:
+
+```bash
+grep -rl 'https://hgs.pages.dev' --include='*.html' --include='*.txt' --include='*.xml' . \
+  | xargs sed -i 's|https://hgs.pages.dev|https://www.hgs.co.ke|g'
+```
+
+Then add a redirect from the Pages subdomain to the custom domain, so the two
+hostnames do not compete for the same pages in search results.
+
+Note that the website row in the footer and on the contact page deliberately
+links to `/` rather than to an absolute domain. It shows `www.hgs.co.ke` as the
+brand address while always resolving on whichever host is serving the site, so
+it cannot break during the move.
 
 The site can equally be hosted on Netlify, Vercel or ordinary shared hosting;
 `_headers` is Cloudflare and Netlify syntax.

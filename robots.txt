@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.hgs.co.ke/sitemap.xml
+Sitemap: https://hgs.pages.dev/sitemap.xml

@@ -96,6 +96,22 @@ Files that support the deployment:
 | `robots.txt` | Allows crawling and points at the sitemap. |
 | `sitemap.xml` | The four indexable pages. Update `lastmod` when content changes materially. |
 
+### Verifying a deploy
+
+```bash
+./scripts/verify-deploy.sh                # checks www.hgs.co.ke
+./scripts/verify-deploy.sh hgs.pages.dev  # checks any other host
+```
+
+It confirms the site is really what is answering (rather than an error page or
+a Cloudflare Access login wall), that every route returns 200, that an unknown
+path returns 404 so `404.html` is wired up, that the `_headers` rules are being
+applied, and that the Open Graph image resolves so shared links render a
+preview. It exits non zero if anything fails.
+
+If the site is not what is answering, the script stops there rather than
+reporting a cascade of failures that all share one cause.
+
 ### Site URL
 
 The canonical host is `https://www.hgs.co.ke`. The canonical URLs, Open Graph

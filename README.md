@@ -98,23 +98,24 @@ Files that support the deployment:
 
 ### Site URL
 
-The site is currently served from `https://hgs.pages.dev`, and the canonical
-URLs, Open Graph tags, `robots.txt` and `sitemap.xml` all point there.
+The canonical host is `https://www.hgs.co.ke`. The canonical URLs, Open Graph
+tags, `robots.txt` and `sitemap.xml` all point there.
 
-When `hgs.co.ke` goes live, switch them in one pass:
+The Pages subdomain `hgs.pages.dev` stays live and serves the same build. The
+canonical tags tell search engines which of the two to index, so the subdomain
+will not compete with the custom domain for the same pages.
+
+To move the site to a different hostname later, one pass does it:
 
 ```bash
-grep -rl 'https://hgs.pages.dev' --include='*.html' --include='*.txt' --include='*.xml' . \
-  | xargs sed -i 's|https://hgs.pages.dev|https://www.hgs.co.ke|g'
+grep -rl 'https://www.hgs.co.ke' --include='*.html' --include='*.txt' --include='*.xml' . \
+  | xargs sed -i 's|https://www.hgs.co.ke|https://NEW.HOST|g'
 ```
-
-Then add a redirect from the Pages subdomain to the custom domain, so the two
-hostnames do not compete for the same pages in search results.
 
 Note that the website row in the footer and on the contact page deliberately
 links to `/` rather than to an absolute domain. It shows `www.hgs.co.ke` as the
 brand address while always resolving on whichever host is serving the site, so
-it cannot break during the move.
+it cannot break during a move.
 
 The site can equally be hosted on Netlify, Vercel or ordinary shared hosting;
 `_headers` is Cloudflare and Netlify syntax.

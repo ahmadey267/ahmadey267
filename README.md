@@ -1,159 +1,21 @@
-# Haviy Global Services website
+### Hi, I'm Ahmed Siyad
 
-Static marketing website for Haviy Global Services (HGS), a Nairobi based travel,
-transport and concierge services provider. Content, imagery and brand colours all
-come from the official HGS company profile.
+Software engineer and founder based in Kenya. I build at the point where engineering, AI and business meet, and I spend a lot of my time helping others do the same.
 
-## Pages
+**What I'm working on**
 
-| File | Purpose |
-| --- | --- |
-| `index.html` | Home. Hero with quick enquiry bar, company overview, service index, destinations, fleet, why HGS, process, FAQ. |
-| `about.html` | Overview, vision and mission, core values, core objectives, why HGS. |
-| `services.html` | Full detail for all nine service lines with a sticky jump rail. |
-| `contact.html` | Contact details and enquiry form, coverage areas. |
+* **AIVERSE**: an AI company focused on practical adoption. We run AI education and capacity building, and help organisations put AI into real workflows with measurable results.
+* **Esoteric Strats**: strategy, technology and advisory. Digital transformation, product and technology strategy, and building systems that businesses actually use.
+* **Muslim Tech Expo Kenya**: an ecosystem platform connecting professionals, founders, students, businesses and the wider Muslim community around technology and opportunity.
 
-## Design system
+**What I work on as an engineer**
 
-Everything is driven by tokens in the `:root` block at the top of
-`assets/css/styles.css`.
+Web applications, APIs, AI systems and agents, automation, data and cloud infrastructure. I care more about whether a system solves the problem than whether the stack is fashionable.
 
-| Token | Value | Role |
-| --- | --- | --- |
-| `--ink` | `#061a2b` | Deep navy ground for dark chapters, footer, hero |
-| `--blue` | `#1e73a7` | Brand blue, sampled from the company profile |
-| `--sky` | `#6ab8e8` | Lifted blue for accents on dark grounds |
-| `--ember` | `#ef6e32` | Brand orange, the single loud accent |
-| `--mist` | `#edf2f6` | Cool neutral ground, biased toward the blue |
-| `--paper` | `#ffffff` | Light ground |
+**Get in touch**
 
-Typography is Bricolage Grotesque for display and Instrument Sans for body and
-labels, loaded from Google Fonts with system fallbacks. The site commits to one
-brand look rather than following the visitor's light or dark preference, so every
-colour is painted explicitly.
+Open to conversations about AI adoption, technology partnerships, speaking, and building the tech ecosystem in East Africa.
 
-The page alternates light and ink chapters. Services are presented as a numbered
-index with a cursor following image preview on desktop and thumbnails on mobile.
-Fleet is a horizontal rail. There are no repeating three up card grids.
-
-## Imagery
-
-The source company profile is a set of flattened page images, so every photograph
-was cropped out of the rendered PDF pages, trimmed of its background, and put
-through one shared colour grade so the set reads as art directed rather than as a
-collage. The grade lifts shadows toward navy, warms the highlights slightly and
-pulls back saturation.
-
-`assets/img/hero.jpg` is the wide desktop hero. `assets/img/hero-portrait.jpg` is
-a separate portrait frame used on phones, where the wide image would crop to an
-unreadable slice.
-
-## Structure
-
-```
-index.html, about.html, services.html, contact.html
-assets/
-  css/styles.css    tokens, then components
-  js/main.js        navigation, reveal, counters, cursor preview, forms
-  img/              graded photography and logos from the company profile
-```
-
-No build step and no dependencies. Open a page directly, or serve the folder:
-
-```bash
-python3 -m http.server 8000
-```
-
-## Deployment (Cloudflare Pages)
-
-The site is plain HTML, CSS and JavaScript with no build step, so Cloudflare
-Pages serves it directly from the repository.
-
-**Connect the repository once, in the Cloudflare dashboard:**
-
-1. Workers & Pages, then Create, then Pages, then Connect to Git
-2. Pick the `ahmadey267/ahmadey267` repository
-3. Set the production branch to the branch holding this site
-4. Framework preset: **None**
-5. Build command: **leave empty**
-6. Build output directory: **/** (the repository root)
-7. Save and Deploy
-
-Every push to the production branch then redeploys automatically, and pushes to
-any other branch get their own preview URL.
-
-**Custom domain:** in the Pages project, Custom domains, add `hgs.co.ke` and
-`www.hgs.co.ke`. If the domain's nameservers are already on Cloudflare the DNS
-records are created for you; otherwise Cloudflare shows the CNAME to add at the
-current registrar. TLS is issued automatically.
-
-Files that support the deployment:
-
-| File | Purpose |
-| --- | --- |
-| `_headers` | Security headers for all routes, plus browser cache windows. Images are cached for 30 days, CSS and JS for one hour because their filenames are not content hashed. |
-| `404.html` | Branded not found page. Cloudflare Pages serves it automatically for unmatched routes. |
-| `robots.txt` | Allows crawling and points at the sitemap. |
-| `sitemap.xml` | The four indexable pages. Update `lastmod` when content changes materially. |
-
-### Verifying a deploy
-
-```bash
-./scripts/verify-deploy.sh                # checks www.hgs.co.ke
-./scripts/verify-deploy.sh hgs.pages.dev  # checks any other host
-```
-
-It confirms the site is really what is answering (rather than an error page or
-a Cloudflare Access login wall), that every route returns 200, that an unknown
-path returns 404 so `404.html` is wired up, that the `_headers` rules are being
-applied, and that the Open Graph image resolves so shared links render a
-preview. It exits non zero if anything fails.
-
-If the site is not what is answering, the script stops there rather than
-reporting a cascade of failures that all share one cause.
-
-### Site URL
-
-The canonical host is `https://www.hgs.co.ke`. The canonical URLs, Open Graph
-tags, `robots.txt` and `sitemap.xml` all point there.
-
-The Pages subdomain `hgs.pages.dev` stays live and serves the same build. The
-canonical tags tell search engines which of the two to index, so the subdomain
-will not compete with the custom domain for the same pages.
-
-To move the site to a different hostname later, one pass does it:
-
-```bash
-grep -rl 'https://www.hgs.co.ke' --include='*.html' --include='*.txt' --include='*.xml' . \
-  | xargs sed -i 's|https://www.hgs.co.ke|https://NEW.HOST|g'
-```
-
-Note that the website row in the footer and on the contact page deliberately
-links to `/` rather than to an absolute domain. It shows `www.hgs.co.ke` as the
-brand address while always resolving on whichever host is serving the site, so
-it cannot break during a move.
-
-The site can equally be hosted on Netlify, Vercel or ordinary shared hosting;
-`_headers` is Cloudflare and Netlify syntax.
-
-## Enquiry form
-
-The hero quick bar passes `service`, `date` and `pax` to `contact.html` as query
-parameters and the contact form prefills from them. On submit the form composes a
-structured email and opens the visitor's mail client, so it works with no backend.
-
-To capture submissions server side instead, point the form at a service such as
-Formspree or Netlify Forms and remove the submit handler in `assets/js/main.js`.
-
-## Content that still needs the business
-
-Three things are missing because the company profile does not contain them, and
-each one is worth more to conversion than further design work:
-
-* Named corporate clients or partner logos
-* Client testimonials with attribution
-* Indicative pricing, or at least starting rates per service
-
-The destination list on the home page is drawn from Kenya's major wildlife
-destinations and should be confirmed against what HGS actually arranges before
-launch.
+<!-- Add links to AIVERSE, Esoteric Strats and Muslim Tech Expo Kenya above, and contact links here, for example:
+[LinkedIn](https://www.linkedin.com/in/...) · [Website](https://...) · [Email](mailto:...)
+-->
